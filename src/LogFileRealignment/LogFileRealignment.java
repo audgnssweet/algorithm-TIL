@@ -1,3 +1,5 @@
+package LogFileRealignment;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Deque;
@@ -8,9 +10,6 @@ import java.util.TreeSet;
 
 public class LogFileRealignment {
 
-    /**
-     * 1. 로그의 가장 앞은 식별자 2. 문자가 숫자보다 앞에 3. 문자가 동일한경우 식별자 4. 숫자 로그는 입력순서대로
-     */
     public static void main(String[] logs) {
 
         TreeSet<String> set = new TreeSet<>((o1, o2) -> {
