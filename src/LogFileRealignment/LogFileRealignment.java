@@ -1,16 +1,13 @@
 package LogFileRealignment;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NavigableSet;
 import java.util.TreeSet;
 
 public class LogFileRealignment {
 
-    public static void main(String[] logs) {
+    public String[] logRealignment(String[] logs) {
 
         TreeSet<String> set = new TreeSet<>((o1, o2) -> {
             final int res = o1.substring(o1.indexOf(" ")).compareTo(o2.substring(o2.indexOf(" ")));
@@ -34,7 +31,7 @@ public class LogFileRealignment {
         return deque.toArray(new String[0]);
     }
 
-    public static void main(String[] logs) {
+    public String[] logRealignment2(String[] logs) {
 
         List<String> digits = new LinkedList<>();
         List<String> chars = new LinkedList<>();
@@ -59,7 +56,7 @@ public class LogFileRealignment {
         return chars.toArray(new String[0]);
     }
 
-    public static void main(String[] logs) {
+    public String[] logRealignment3(String[] logs) {
 
         TreeSet<String> set = new TreeSet<>(
             (log1, log2) -> {
