@@ -27,5 +27,4 @@ public class OtherGroupAnagram {
         }
         return new ArrayList<>(map.values());
     }
-
 }
