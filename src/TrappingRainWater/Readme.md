@@ -1,4 +1,4 @@
-## 가장 흔한 단어
+## 빗물 트래핑
 
 https://leetcode.com/problems/trapping-rain-water
 
