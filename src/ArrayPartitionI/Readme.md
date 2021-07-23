@@ -8,6 +8,6 @@ https://leetcode.com/problems/array-partition-i/
 
 <h5>정리</h5>
 
-    1. 1차원 자료구조를 다룰 때 배열을 알고있다면 정말 쉬운문제
+    1. 1차원 자료구조를 다룰 때 정렬 접근법을 알고있다면 정말 쉬운문제
 
 ---
