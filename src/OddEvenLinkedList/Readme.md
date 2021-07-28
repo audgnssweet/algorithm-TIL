@@ -1,16 +1,17 @@
-## 연결리스트 뒤집기
+## 홀짝 연결리스트
 
-https://leetcode.com/problems/reverse-linked-list
+https://leetcode.com/problems/odd-even-linked-list
 
 ---
 
 <h5>내 풀이법</h5>
 
-    1. 처음부터 끝까지 가면서 하나씩 만들기 (정석)
+    1. 투 포인터 방식으로, 매우 효율적으로 해결할 수 있었다.
 
 <h5>정리</h5>
 
-    1. 속도가 빨랐다. 너무 쉬운문제
+    1. 문제가 쉽고, 속도는 빨랐다.
+    2. 백트래킹을 이용하려했으나, 필요없었다.
 
 ---
 

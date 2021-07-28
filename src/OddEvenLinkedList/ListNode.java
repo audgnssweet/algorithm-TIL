@@ -1,4 +1,4 @@
-package ReverseLinkedList;
+package OddEvenLinkedList;
 
 public class ListNode {
 
