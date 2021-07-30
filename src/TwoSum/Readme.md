@@ -6,7 +6,7 @@ https://leetcode.com/problems/two-sum
 
 <h5>내 풀이법</h5>
 
-    1. Brute Force 풀이법
+    1. Brute Force 풀이법a
 
 <h5>정리</h5>
 
