@@ -4,45 +4,44 @@ public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
-        } else if (lists.length == 1) {
-            return lists[0];
         }
 
-        ListNode std= null, l2, temp;
-        int idx = 0;
-        for (int i = 0; i < lists.length; i++) {
-            if (lists[i] != null) {
-                std = lists[i];
-                idx = i + 1;
-                break;
-            }
+        ListNode root = lists[0];
+        for (int i = 1; i < lists.length; i++) {
+            root = merge(root, lists[i]);
         }
-        ListNode root = new ListNode(-1, std);
+        return root;
+    }
 
-        for (int i = idx; i < lists.length; i++) {
-            if (lists[i] == null) {
-                continue;
-            }
-            l2 = lists[i];
-            root.next = std.val <= l2.val ? std : l2;
-            temp = root;
-            while (std != null && l2 != null) {
-                if (std.val <= l2.val) {
-                    while (std != null && std.val <= l2.val) {
-                        std = std.next;
-                        temp = temp.next;
-                    }
-                    temp.next = l2;
-                } else {
-                    while (l2 != null && l2.val <= std.val) {
-                        l2 = l2.next;
-                        temp = temp.next;
-                    }
-                    temp.next = std;
-                }
-            }
-            std = root.next;
+    private ListNode merge(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
         }
+
+        if (l2 == null) {
+            return l1;
+        }
+
+        ListNode root = new ListNode(-1);
+        ListNode cur = root;
+
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+
+        if (l1 == null) {
+            cur.next = l2;
+        } else {
+            cur.next = l1;
+        }
+
         return root.next;
     }
 }
