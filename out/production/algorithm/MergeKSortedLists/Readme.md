@@ -19,4 +19,5 @@ https://leetcode.com/problems/merge-k-sorted-lists
 <h5>정석풀이</h5>
 
     1. 우선순위 큐를 이용 (자료구조)
+    2. 우선순위 큐는 중복을 허용했다.
     2. 속도는 평균이었다.
