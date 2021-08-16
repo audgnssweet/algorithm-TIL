@@ -34,7 +34,7 @@ public class NetworkDelayTime {
                 .add(List.of(info[I_NEXT_NODE], info[I_WEIGHT]));
         }
 
-        while (map.size() != 0) {
+        while (true) {
             int min = INF;
             int cur = 0;
             for (int i = 1; i <= n; i++) {
