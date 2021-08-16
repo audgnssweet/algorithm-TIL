@@ -57,7 +57,6 @@ public class NetworkDelayTime {
                         res[cur] + next.get(NEXT_WEIGHT)
                     );
                 }
-                map.remove(cur);
             }
         }
 
