@@ -7,6 +7,6 @@
     실무에 매우 유용하게 쓰이는 자료구조 (문자열 탐색)
     자연어 처리 분야에서 분석 패턴을 트라이로 만들어놓고 자연어 문장에 패턴을 찾아 처리한다.
 
-![image](https://user-images.githubusercontent.com/19279163/130893986-da57943d-f421-463c-8b70-aa2d08e90304.png)
+![image](https://user-images.githubusercontent.com/19279163/130905157-d106024f-d21a-46a5-98fc-ac75ec25cf6f.png)
 
     위와 같은 구조를 트라이라고 한다.
