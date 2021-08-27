@@ -13,5 +13,6 @@ https://leetcode.com/problems/minimum-height-trees
 <h5> 정석 풀이 </h5>
 
     1. 리프노트 쳐내기
+    -> 연결된 점이 한개이거나, 0개이면 리프노드라는 접근이 중요하다.
 
 

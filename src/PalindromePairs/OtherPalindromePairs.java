@@ -4,6 +4,6 @@ import java.util.List;
 
 public class OtherPalindromePairs {
 
-    public List<List<Integer>> palindromePairs(String[] words) {
-    }
+//    public List<List<Integer>> palindromePairs(String[] words) {
+//    }
 }
