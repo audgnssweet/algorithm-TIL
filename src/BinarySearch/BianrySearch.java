@@ -1,4 +1,4 @@
-package BianrySearch;
+package BinarySearch;
 
 public class BianrySearch {
 
