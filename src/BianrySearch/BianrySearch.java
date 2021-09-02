@@ -11,7 +11,7 @@ public class BianrySearch {
             return -1;
         }
 
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;    //정확하게 구하는 방법
         if (nums[mid] == target) {
             return mid;
         } else if (nums[mid] < target) {
