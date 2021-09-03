@@ -14,13 +14,13 @@ public class Utf8Validation {
                 tmp -= 1;
             }
 
-            if (cnt == 1 || cnt > 5) {  //알맞지 않은 UTF-8 형태
+            if (cnt == 1 || cnt > 5) {  //알맞지 않은 UTF-8 형태는 거른다.
                 return false;
             }
 
             while (cnt > 1) {
                 idx += 1;
-                if ((idx == data.length) || ((data[idx] & (1 << 7)) == 0) || ((data[idx] & (1 << 6)) != 0)) {
+                if ((idx == data.length) || ((data[idx] & (1 << 7)) == 0) || ((data[idx] & (1 << 6)) != 0)) {   //형태 검증
                     return false;
                 }
                 cnt -= 1;
