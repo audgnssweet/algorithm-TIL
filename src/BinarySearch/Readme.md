@@ -16,3 +16,7 @@ https://leetcode.com/problems/binary-search
     그래서 중앙값을 구할 때 (start + end) / 2 로 구하지 말고
     start + (end - start) / 2 로 구해야한다.
     
+#### Java 의 Arrays.binSearch()
+
+    있으면 몇번째, 없으면 몇번째에 들어가야하는지 (음수로)
+    알려주는 편리한 함수이다.
