@@ -9,7 +9,7 @@ public class NewsClustering {
     public int solution(String str1, String str2) {
         Map<String, Integer> map = new HashMap<>();
 
-        String pattern = "(?=.*[^a-z]).*";
+        String pattern = ".*(?=.*[^a-z])";
         int intersection = 0;
         int union = 0;
 
