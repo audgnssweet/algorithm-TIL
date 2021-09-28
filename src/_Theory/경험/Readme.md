@@ -61,3 +61,4 @@ Arrays.sort(arr);
 
     21. 시간은 숫자로 다룰 수 있도록 60을 곱하거나 해서 숫자로 만들어 비교할 수 있다.
 
+    22. toBinaryString(), toHexString() 등을 이용해서 쉽게 변환이 가능하다.
