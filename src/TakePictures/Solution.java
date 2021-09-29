@@ -69,8 +69,4 @@ public class Solution {
         return true;
     }
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.solution(2, new String[]{"N~F=0", "R~T>2"});
-    }
 }
