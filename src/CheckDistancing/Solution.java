@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Solution {
 
+    static int[] dx = new int[]{0, 1, 0, -1};
+    static int[] dy = new int[]{-1, 0, 1, 0};
+
     public static int[] solution(String[][] places) {
 
         List<Integer> res = new LinkedList<>();
@@ -46,36 +49,16 @@ public class Solution {
             return arr[y - 1][x] == 'P' || arr[y][x + 1] == 'P' || arr[y + 1][x] == 'P' || arr[y][x - 1] == 'P';
         } else {
             arr[y][x] = 'X';
-            //상
-            if (arr[y - 1][x] == 'P') {
-                return true;
-            } else {
-                if (arr[y - 1][x] != 'X' && isInvalid(arr, x, y - 1, true)) {
+            for (int i = 0; i < 4; i++) {
+                int nextX = x + dx[i];
+                int nextY = y + dy[i];
+
+                if (arr[nextY][nextX] == 'P') {
                     return true;
-                }
-            }
-            //우
-            if (arr[y][x + 1] == 'P') {
-                return true;
-            } else {
-                if (arr[y][x + 1] != 'X' && isInvalid(arr, x + 1, y, true)) {
-                    return true;
-                }
-            }
-            //하
-            if (arr[y + 1][x] == 'P') {
-                return true;
-            } else {
-                if (arr[y + 1][x] != 'X' && isInvalid(arr, x, y + 1, true)) {
-                    return true;
-                }
-            }
-            //좌
-            if (arr[y][x - 1] == 'P') {
-                return true;
-            } else {
-                if (arr[y][x - 1] != 'X' && isInvalid(arr, x - 1, y, true)) {
-                    return true;
+                } else {
+                    if (arr[nextY][nextX] != 'X' && isInvalid(arr, nextX, nextY, true)) {
+                        return true;
+                    }
                 }
             }
             arr[y][x] = 'P';
