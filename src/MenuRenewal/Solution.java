@@ -1,67 +1,69 @@
 package MenuRenewal;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Solution {
 
     static Map<String, Integer> map = new HashMap<>();
-    static Set<Integer> set = new HashSet<>();
-    static boolean[] visited;
-    static char[] temp;
 
     public static String[] solution(String[] orders, int[] course) {
-
-        for (int i = 0; i < course.length; i++) {
-            set.add(course[i]);
-        }
-
-        for (String order : orders) {
-            for (int len : course) {
-
-                //dfs로 집어넣기
-                visited = new boolean[order.length()];
-                temp = new char[order.length()];
-
-
+        for (String str : orders) {
+            for (int i : course) {
+                combination(i, new char[i], str, 0, 0);
             }
         }
 
+        List<String> removes = new LinkedList<>();
+        for (String key : map.keySet()) {
+            if (map.get(key) == 1) {
+                removes.add(key);
+            }
+        }
+        removes.forEach(rem -> map.remove(rem));
+
         List<String> res = new LinkedList<>();
-        for (int i = 0; i < course.length; i++) {
-            int len = course[i];
-
+        for (int i : course) {
             int curMax = 0;
-            List<String> strs = new LinkedList<>();
-            for (String s : map.keySet()) {
-                if (s.length() == len) {
-                    int count = map.get(s);
+            List<String> temp = new LinkedList<>();
 
-                    if (curMax < count) {
-                        strs.clear();
-                        strs.add(s);
-                        curMax = s.length();
-                    } else if (curMax == count) {
-                        strs.add(s);
+            for (String key : map.keySet()) {
+                if (key.length() == i) {
+                    int curCount = map.get(key);
+                    if (curCount > curMax) {
+                        temp.clear();
+                        temp.add(key);
+                        curMax = curCount;
+                    } else if (curCount == curMax) {
+                        temp.add(key);
                     }
                 }
             }
 
-            res.addAll(strs);
+            res.addAll(temp);
         }
 
         Collections.sort(res);
         return res.toArray(new String[0]);
     }
 
-    public static void main(String[] args) {
-        solution(new String[]{
-            "ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"
-        }, new int[]{2, 3, 4});
+    public static void combination(int target, char[] temp, String str, int curCount, int start) {
+        if (curCount == target) {
+            char[] temp2 = Arrays.copyOf(temp, temp.length);
+            Arrays.sort(temp2);
+            String cur = new String(temp2);
+            int count = map.getOrDefault(cur, 0);
+            map.put(cur, count + 1);
+        } else {
+            for (int i = start; i < str.length(); i++) {
+                temp[curCount] = str.charAt(i);
+                combination(target, temp, str, curCount + 1, i + 1);
+            }
+        }
     }
+
 }
