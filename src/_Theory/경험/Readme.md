@@ -62,3 +62,9 @@ Arrays.sort(arr);
     21. 시간은 숫자로 다룰 수 있도록 60을 곱하거나 해서 숫자로 만들어 비교할 수 있다.
 
     22. toBinaryString(), toHexString() 등을 이용해서 쉽게 변환이 가능하다.
+
+    23. char[] 을 new String() 안에 넣으면 String을 만들 수 있다.
+
+    24. Arrays.copyOf() 로 완전 똑같은 새로운 배열을 만들 수 있다.
+
+    25. Math.round() * 100 / 100.0 을 이용하면 원하는 자리까지 반올림이 가능하다.
