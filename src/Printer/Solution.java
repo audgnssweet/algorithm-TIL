@@ -18,7 +18,7 @@ public class Solution {
         }
 
         int temp = priorities[location];
-        int count = 1;
+        int count = 0;
         while (!queue.isEmpty()) {
             if (location == 0 && newarr[ptr] == temp) {
                 count += 1;
@@ -40,6 +40,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        solution(new int[]{2,1,3,2}, 2);
+        solution(new int[]{1,1,9,1,1,1}, 0);
     }
 }
