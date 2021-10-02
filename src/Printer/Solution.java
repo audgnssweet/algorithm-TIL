@@ -38,8 +38,4 @@ public class Solution {
 
         return count;
     }
-
-    public static void main(String[] args) {
-        solution(new int[]{1,1,9,1,1,1}, 0);
-    }
 }
