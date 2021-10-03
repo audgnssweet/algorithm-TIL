@@ -1,40 +1,67 @@
 package FindPrimeNumber;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
 
 public class Solution {
 
     static char[] chars;
-    static boolean[] visit;
-    static List<Integer> nums = new ArrayList<>();
+    static Set<Integer> nums = new HashSet<>();
 
     public static int solution(String numbers) {
+        chars = numbers.toCharArray();
+        permutation(new LinkedList<>(), new boolean[numbers.length()]);
 
-        return 0;
+        int res = 0;
+        int max = Integer.MIN_VALUE;
+        for (Integer num : nums) {
+            max = Math.max(max, num);
+        }
+
+        boolean[] primes = new boolean[max + 1];
+        int idx = 2;
+        int temp = 0;
+
+        while (idx <= max) {
+            if (!primes[idx]) {
+                temp = idx * 2;
+                while (temp <= max) {
+                    primes[temp] = true;
+                    temp += idx;
+                }
+            }
+
+            idx += 1;
+        }
+
+        for (Integer num : nums) {
+            if (!primes[num] && num > 1) {
+                res += 1;
+            }
+        }
+
+        return res;
     }
 
-    static void permutation(int n, LinkedList<Character> temp, int curCount, boolean[] visit) {
-        if (curCount != 0) {
-            System.out.println(temp);
+    static void permutation(LinkedList<Character> temp, boolean[] visit) {
+        if (temp.size() != 0) {
+            StringBuilder sb = new StringBuilder("");
+            for (Character character : temp) {
+                sb.append(character);
+            }
+            nums.add(Integer.parseInt(sb.toString()));
         }
         for (int i = 0; i < chars.length; i++) {
             if (!visit[i]) {
                 visit[i] = true;
 
                 temp.addLast(chars[i]);
-                permutation(n, temp, curCount + 1, visit);
+                permutation(temp, visit);
                 temp.pollLast();
 
                 visit[i] = false;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        chars = new char[]{'a', 'b', 'c'};
-
-        permutation(3, new LinkedList<>(), 0, new boolean[3]);
     }
 }
