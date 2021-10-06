@@ -14,6 +14,7 @@ https://ratsgo.github.io/data%20structure&algorithm/2017/11/26/dijkstra/
 한 시작점으로부터 다른 모든 노드로의 최단 경로를 구할 수 있다.<br />
 </p>
 
+    한 곳에서 다른 모든 곳으로 가는 최단경로 구하기
 
     1. 최소 비용의 최단경로 구하기
     -> BFS를 이용하는 대표적인 알고리즘
