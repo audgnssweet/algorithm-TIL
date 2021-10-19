@@ -39,12 +39,7 @@ public class Main {
             int nextX = x + dx[i];
             int nextY = y + dy[i];
 
-            if (nextX < 0 || nextY < 0 || nextX >= xMax || nextY >= yMax) {
-                continue;
-            }
-
-            int nextIdx = arr[nextY][nextX] - 'A';
-            if (visit[nextIdx]) {
+            if (nextX < 0 || nextY < 0 || nextX >= xMax || nextY >= yMax || visit[arr[nextY][nextX] - 'A']) {
                 continue;
             }
 
