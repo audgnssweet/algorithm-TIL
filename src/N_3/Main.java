@@ -1,4 +1,4 @@
-package NHN_20211023_3;
+package N_3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

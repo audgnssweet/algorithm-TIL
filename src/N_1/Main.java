@@ -1,4 +1,4 @@
-package NHN_20211023_1;
+package N_1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
