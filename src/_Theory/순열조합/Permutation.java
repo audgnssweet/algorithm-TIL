@@ -15,6 +15,7 @@ public class Permutation {
 
     public static void permutation(int target, int[] temp, int curCount, boolean[] visited) {
         if (curCount == target) {
+            System.out.println(Arrays.toString(temp));
             res.add(Arrays.toString(temp));
         } else {
             for (int i = 0; i < arr.length; i++) {
