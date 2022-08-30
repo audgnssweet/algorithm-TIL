@@ -1,7 +1,5 @@
 package ranking;
 
-import java.util.Arrays;
-
 public class OtherSolution {
 
 	static int[][] res;
@@ -34,9 +32,9 @@ public class OtherSolution {
 		}
 
 		int cnt = 0;
-		for(int[] player: res) {
+		for (int[] player : res) {
 			int tmp = 0;
-			for(int next: player) {
+			for (int next : player) {
 				if (next != 0) {
 					tmp++;
 				}
@@ -46,10 +44,5 @@ public class OtherSolution {
 			}
 		}
 		return cnt;
-	}
-
-	public static void main(String[] args) {
-		OtherSolution o = new OtherSolution();
-		o.solution()
 	}
 }
