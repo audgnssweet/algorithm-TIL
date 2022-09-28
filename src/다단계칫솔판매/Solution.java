@@ -1,111 +1,64 @@
 package 다단계칫솔판매;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class Solution {
-
-	private List<Person> people;
-	private Map<String, Person> personByName = new HashMap<>();
+class Solution {
 
 	public int[] solution(String[] enroll, String[] referral, String[] seller, int[] amount) {
-		people = getPeople(enroll);
-		MultiLevel multiLevel = initMultiLevel(referral);
+		Map<String, Node> nodeByPerson = new HashMap<>();
+		nodeByPerson.put("-", new Node("-"));
 
-		IntStream.range(0, seller.length)
-			.forEach(idx -> multiLevel.sell(findByName(seller[idx]), getProfit(amount[idx])));
+		for (int i = 0; i < enroll.length; i++) {
+			String name = enroll[i];
+			String refName = referral[i];
 
-		Map<Person, Integer> profitByPerson = multiLevel.getProfitByPerson();
+			Node person = nodeByPerson.getOrDefault(name, new Node(name));
+			Node ref = nodeByPerson.getOrDefault(refName, new Node(refName));
 
-		return people.stream()
-			.mapToInt(profitByPerson::get)
-			.toArray();
-	}
+			person.ref = ref;
 
-	private int getProfit(int amount) {
-		return amount * 100;
-	}
-
-	private MultiLevel initMultiLevel(String[] referral) {
-		MultiLevel m = new MultiLevel();
-
-		IntStream.range(0, people.size())
-			.forEach(idx -> {
-				Person person = people.get(idx);
-				Person recommender = findByName(referral[idx]);
-
-				m.add(person, recommender);
-			});
-
-		return m;
-	}
-
-	private Person findByName(String name) {
-		return personByName.getOrDefault(name, Person.DEFAULT);
-	}
-
-	private List<Person> getPeople(String[] enroll) {
-		return Arrays.stream(enroll)
-			.map(Person::new)
-			.peek(person -> personByName.put(person.getName(), person))
-			.collect(Collectors.toList());
-	}
-
-	public static class MultiLevel {
-		private final Map<Person, Person> recommenderByPerson = new HashMap<>();
-		private final Map<Person, Integer> profitByPerson = new HashMap<>();
-
-		public Map<Person, Integer> getProfitByPerson() {
-			return profitByPerson;
+			nodeByPerson.put(name, person);
+			nodeByPerson.put(refName, ref);
 		}
 
-		public void add(Person person, Person recommender) {
-			recommenderByPerson.put(person, recommender);
-			profitByPerson.put(person, 0);
+		for (int i = 0; i < seller.length; i++) {
+			Node person = nodeByPerson.get(seller[i]);
+			int ben = amount[i] * 100;
+
+			person.setBenefit(ben);
 		}
 
-		public void sell(Person seller, int profit) {
-			if (!seller.isRoot()) {
-				profitByPerson.put(seller, profitByPerson.getOrDefault(seller, 0) + getProfitExceptCommission(profit));
-				if (getCommission(profit) >= 1) {
-					sell(recommenderByPerson.get(seller), getCommission(profit));
-				}
-			}
+		int[] res = new int[enroll.length];
+		for (int i = 0; i < enroll.length; i++) {
+			Node person = nodeByPerson.get(enroll[i]);
+
+			res[i] = person.benefit;
 		}
 
-		private int getProfitExceptCommission(int profit) {
-			return profit - getCommission(profit);
-		}
-
-		private int getCommission(int profit) {
-			return profit / 10;
-		}
+		return res;
 	}
 
-	public static class Person {
-		public static final Person DEFAULT = new Person("-");
+	static class Node {
+		String name;
+		int benefit;
 
-		private final String name;
-		private int profit = 0;
+		Node ref;
 
-		public Person(String name) {
+		public Node(String name) {
 			this.name = name;
 		}
 
-		String getName() {
-			return name;
-		}
-
-		public boolean nameEquals(String name) {
-			return this.name.equals(name);
-		}
-
-		public boolean isRoot() {
-			return this == DEFAULT;
+		public void setBenefit(int ben) {
+			int refBenefit = (int)(ben * 0.1);
+			if (refBenefit < 1) {
+				benefit += ben;
+			} else {
+				benefit += (ben - refBenefit);
+				if (ref != null) {
+					ref.setBenefit(refBenefit);
+				}
+			}
 		}
 	}
 }

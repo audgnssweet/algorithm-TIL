@@ -66,7 +66,7 @@ public class Solution {
         visit = new boolean[N + 1];
     }
 
-    public static int solution(int N, int[][] road, int K) {
+    public static int solution3(int N, int[][] road, int K) {
         init(N, road);
         PriorityQueue<Edge> pq = new PriorityQueue<>((e1, e2) -> e1.w - e2.w);
         for (int i = 1; i < edges.length; i++) {

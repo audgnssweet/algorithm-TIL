@@ -2,26 +2,32 @@ package Hindex;
 
 import java.util.Arrays;
 
-public class Solution {
+class Solution {
 
-    public static int solution(int[] citations) {
-        Arrays.sort(citations);
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		int solution1 = solution.solution(new int[] {3, 0, 6, 1, 5, 6, 5, 1});
+		System.out.println(solution1);
+	}
 
-        int res = citations[citations.length - 1];
-        while (res > 0) {
-            int idx = Arrays.binarySearch(citations, res);
-            idx = idx >= 0 ? idx : Math.abs(idx + 1);
-            if (citations.length - idx >= res) {
-                break;
-            }
+	public int solution(int[] citations) {
+		Arrays.sort(citations);
 
-            res -= 1;
-        }
+		for (int i = citations.length - 1; i >= 0; i--) {
+			while (i >= 1 && citations[i - 1] == citations[i]) {
+				i--;
+			}
 
-        return res;
-    }
+			int right = citations.length - i;
 
-    public static void main(String[] args) {
-        solution(new int[]{3, 0, 6, 1, 5});
-    }
+			int low = i == 0 ? 0 : citations[i - 1];
+			for (int cur = citations[i]; cur > low; cur--) {
+				if (right >= cur) {
+					return cur;
+				}
+			}
+		}
+
+		return 0;
+	}
 }
