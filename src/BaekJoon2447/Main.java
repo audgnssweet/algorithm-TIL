@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Main {
-
     static char[][] res;
     static int[][] rounds = new int[][]{
         {0, 0},
