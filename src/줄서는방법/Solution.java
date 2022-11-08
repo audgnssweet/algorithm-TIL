@@ -1,47 +1,44 @@
 package 줄서는방법;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Solution {
 
-	static boolean[] visited;
-	static int[] res;
-	static int n;
-	static long k;
-
-	static int target;
-
-	static boolean isEnd = false;
-
 	public int[] solution(int n, long k) {
-		visited = new boolean[n];
-		res = new int[n];
-		Solution.n = n;
-		Solution.k = k;
-		target = 1;
+		//1 -> 1
+		//2 -> 2
+		//3 -> 6
+		//4 -> 24
+		//5 -> 24 * 5
+		int[] res = new int[n];
+		List<Integer> nums = new ArrayList<>();
+		for (int i = 1; i <= n; i++) {
+			nums.add(i);
+		}
 
-		dfs(0);
+		long size = 1;
+		for (int i = 2; i <= n; i++) {
+			size *= i;
+		}
+
+		int idx = 0;
+		while (idx < res.length) {
+			long partition = size / n;
+			int temp = 1;
+			while (partition * temp < k) {
+				temp++;
+			}
+
+			res[idx++] = nums.remove(temp - 1);
+
+			size = partition;
+			n -= 1;
+			k -= (partition * (temp - 1));
+		}
 
 		return res;
 	}
 
-	private void dfs(int depth) {
-		if (depth == n) {
-			if (target == k) {
-				isEnd = true;
-			} else {
-				target++;
-			}
-		} else {
-			for (int i = 0; i < n; i++) {
-				if (!visited[i]) {
-					visited[i] = true;
-					res[depth] = i + 1;
-					dfs(depth + 1);
-					if (isEnd) {
-						break;
-					}
-					visited[i] = false;
-				}
-			}
-		}
-	}
 }
