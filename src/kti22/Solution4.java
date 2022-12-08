@@ -1,4 +1,4 @@
-package kakao2022intern;
+package kti22;
 
 public class Solution4 {
 

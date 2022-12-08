@@ -1,4 +1,4 @@
-package kakao2022intern;
+package kti22;
 
 import java.util.Arrays;
 import java.util.LinkedList;
