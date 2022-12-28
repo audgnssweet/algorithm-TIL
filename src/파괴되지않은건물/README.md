@@ -1,0 +1,1 @@
+[누적합 아이디어](https://developer-ellen.tistory.com/167)
