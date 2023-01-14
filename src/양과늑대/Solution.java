@@ -48,7 +48,7 @@ class Solution {
                 dfs(next, s, w);
                 infos[cur] = temp;
                 visited[cur][s][w] = false;
-            }야
+            }
         }
     }
 }
